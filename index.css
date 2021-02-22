@@ -8,6 +8,7 @@
 :root {
   --medium-image: url(./img/medium_pic2.jpg);
   --small-image: url(./img/small_pic2.jpg);
+  --image-2: url(./img/pic3.jpg);
   --margin-top-header: 8vh;
   font-family: Arial, Tahoma, sans-serif;
   background-color: #bbbbbb;
@@ -36,7 +37,7 @@ section {
   margin-right: 4%;
 }
 
-section:first-child ~ * { margin-top: 20px; }
+section:first-child ~ * { margin-top: 6%; }
 
 /* .aspcet-radio {
   position: relative;
@@ -54,7 +55,6 @@ section:first-child ~ * { margin-top: 20px; }
   height: auto;
   /* margin-left: 6%;
   margin-right: 6%; */
-  background-color: #ffffff;
 }
 
 .flexbox .mini-banner-column-small {
@@ -82,7 +82,7 @@ section:first-child ~ * { margin-top: 20px; }
 
 .flexbox .item-small:before,
 .flexbox .item-big:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -101,7 +101,7 @@ section:first-child ~ * { margin-top: 20px; }
 .flexbox .item-small:hover:before,
 .flexbox .item-big:hover:before {
   filter: blur(4px);
-  box-shadow: inset 0 0 4px 10px rgba(220, 220, 220, 0.5);
+  box-shadow: inset 0 0 4px 10px rgba(136, 136, 136, 0.5);
 }
 
 .flexbox .item {
@@ -178,3 +178,109 @@ section:first-child ~ * { margin-top: 20px; }
 
   .flexbox .item-small + .item-small { margin-top: 5%; }
 }
+
+
+
+/*------------------------------------------------------
+                     GRID CSS
+------------------------------------------------------*/
+
+.grid .mini-banner-container {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr 0.1fr 2.1fr 0.1fr 1fr;
+  max-width: 100%;
+  height: auto;
+}
+
+.grid .wrapper {
+  position: relative;
+  padding-top: 100%; /* aspect radio */
+  overflow: hidden;
+}
+
+.grid .big-wrapper {
+  grid-row: 1 / 4;
+  grid-column: 3 / 4;
+}
+
+.grid .small-wrapper-1 {
+  grid-row-start: 1;
+  grid-column-start: 1;
+}
+
+.grid .small-wrapper-2 {
+  grid-row-start: 1;
+  grid-column-end: -1;
+}
+
+.grid .small-wrapper-3 {
+  grid-row-end: -1;
+  grid-column-start: 1;
+}
+
+.grid .small-wrapper-4 {
+  grid-row-end: -1;
+  grid-column-end: -1;
+}
+
+.grid .wrapper:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image:
+    linear-gradient(to left, rgba(44,44,44, 0.6), rgba(44,44,44, 0.6)),
+    var(--image-2);
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center;
+  background-size: cover, cover;
+  transition:
+    filter 0.2s linear,
+    box-shadow 0.2s linear;
+}
+
+.grid .wrapper:hover:before {
+  filter: blur(4px);
+  box-shadow: 0 0 4px 10px rgba(136, 136, 136, 0.5);
+}
+
+.grid .item-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10%;
+}
+
+.grid .wrapper:hover .item-content {
+  cursor: pointer;
+}
+
+.grid .item-content .button {
+  display: inline-block;
+  border: solid 2px #ffffff;
+  padding: 3% 10%;
+  font-size: 16px;
+  color: #ffffff;
+  transition:
+    background-color 0.2s linear,
+    color 0.2s linear;
+}
+
+.grid .wrapper:hover .button {
+  background-color: #ffffff;
+  color: #111111;
+}
+
+
+/*------------------------------------------------------
+                GRID CSS - MEDIA QUERIES
+------------------------------------------------------*/
